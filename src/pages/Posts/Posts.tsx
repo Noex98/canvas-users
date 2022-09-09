@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { userModel } from '../../$firebase'
 import { Header } from '../../components';
 import { User } from '../../types';
+import './posts.css';
 
 type Filter = {
     showStudents: boolean,
@@ -42,54 +43,57 @@ export const Posts = () => {
             })
             return filtered
         })
-        console.log(filter);
+        console.log(users);
         
     }, [users, filter])
 
     return (
         <>
             <Header />
-            <div className="userContainer">
-                {filteredUsers.map((user, i) => (
-                    <div key={i}>user</div>
-                ))}
-            </div>
-            <div>
-                <label>
-                    Show Students
-                    <input 
-                        type="checkbox" 
-                        checked={filter.showStudents} 
-                        onChange={() => setFilter(prev => { return {...prev, showStudents: !prev.showStudents}})}
-                    />
-                </label>
-                <label>
-                    Show Teachers
-                    <input 
-                        type="checkbox" 
-                        checked={filter.showTeachers}
-                        onChange={() => setFilter(prev => { return {...prev, showTeachers: !prev.showTeachers}})}
-                    />
-                </label>
-                <label>
-                    Search
-                    <input 
-                        type="text" 
-                        value={filter.search} placeholder='Search by name'
-                        onChange={(e) => setFilter(prev => { return {...prev, search: e.target.value}})}
-                    />
-                </label>
-                <label>
-                    Sort by
-                    <select 
-                        value={filter.sort} 
-                        onChange={(e) => setFilter(prev => {return {...prev, sort: e.target.value}})}
-                    >
-                        <option value="name">First name</option>
-                        <option value="sortable_name">Last name</option>
-                        <option value="enrollment_type">Enrollment</option>
-                    </select>
-                </label>
+            <div className='postsPage'>
+                <div>
+                    <label>
+                        <span>Show Students </span>
+                        <input 
+                            type="checkbox" 
+                            checked={filter.showStudents} 
+                            onChange={() => setFilter(prev => { return {...prev, showStudents: !prev.showStudents}})}
+                        />
+                    </label>
+                    <label>
+                        <span>Show Teachers </span>
+                        <input 
+                            type="checkbox" 
+                            checked={filter.showTeachers}
+                            onChange={() => setFilter(prev => { return {...prev, showTeachers: !prev.showTeachers}})}
+                        />
+                    </label>
+                    <label>
+                        <span>Search </span>
+                        <input 
+                            type="text" 
+                            value={filter.search} placeholder='Search by name'
+                            onChange={(e) => setFilter(prev => { return {...prev, search: e.target.value}})}
+                        />
+                    </label>
+                    <label>
+                        <span>Sort by </span>
+                        <select 
+                            value={filter.sort} 
+                            onChange={(e) => setFilter(prev => {return {...prev, sort: e.target.value}})}
+                        >
+                            <option value="name">First name</option>
+                            <option value="sortable_name">Last name</option>
+                            <option value="enrollment_type">Enrollment</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div className="userContainer">
+                    {filteredUsers.map((user, i) => (
+                        <div key={i}>user</div>
+                    ))}
+                </div>
             </div>
         </>
     )

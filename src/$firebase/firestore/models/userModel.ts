@@ -1,17 +1,17 @@
 import { createCollection } from "../utils";
-import { User } from "../../../types";
+import { User, UserRaw } from "../../../types";
 import { 
     doc,
     getDocs, 
     onSnapshot,
-    setDoc
+    setDoc,
 } from "firebase/firestore";
 
 const name = 'users';
 
 export class userModel {
 
-    static ref = createCollection<User>(name)
+    static ref = createCollection<UserRaw>(name)
 
     /**
      * @returns An array of all documents in the collection
@@ -30,7 +30,10 @@ export class userModel {
     static startObserver(dataHandler: (data:User[] ) => void){
         return onSnapshot(this.ref, 
             data => {
-                dataHandler(data.docs.map(doc => doc.data()));
+                dataHandler(data.docs.map(doc => ({
+                    ...doc.data(),
+                    id: doc.id
+                })));
             },
             err => {
                 console.log(err);
@@ -43,7 +46,7 @@ export class userModel {
      * @param id Document ID, if omitted it will be auto generated
      */
 
-    static setDoc(data: User, id?: string){
+    static setDoc(data: UserRaw, id?: string){
         setDoc(doc(this.ref, id), data)
     }
 }

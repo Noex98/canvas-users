@@ -1,5 +1,4 @@
-export interface User {
-    id: number,
+export interface UserRaw {
     name: string,
     created_at: string,
     sortable_name: string,
@@ -8,4 +7,8 @@ export interface User {
     email: string,
     analytics_url: string,
     enrollment_type: "student" | "teacher"
+}
+
+export interface User extends UserRaw {
+    id: string,
 }
