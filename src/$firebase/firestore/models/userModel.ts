@@ -1,6 +1,7 @@
 import { createCollection } from "../utils";
 import { IUser,IUserRaw } from "../../../types";
 import { 
+    deleteDoc,
     doc,
     getDocs, 
     onSnapshot,
@@ -28,7 +29,7 @@ export class userModel {
      */
 
     static startObserver(dataHandler: (data:IUser[] ) => void){
-        return onSnapshot(this.ref, 
+        return onSnapshot(this.ref,
             data => {
                 dataHandler(data.docs.map(doc => ({
                     ...doc.data(),
@@ -50,5 +51,15 @@ export class userModel {
     static async setDoc(data: IUserRaw, id?: string){
         console.log(this.ref);
         return await setDoc(doc(this.ref), data);
+    }
+
+    /**
+     * 
+     * @param id ID of the doc to be deleted
+     * @returns A Promise resolved once the document has been successfully deleted from the backend (note that it won't resolve while you're offline).
+     */
+
+    static async deleteDoc(id: string){
+        return await deleteDoc(doc(this.ref, id))
     }
 }

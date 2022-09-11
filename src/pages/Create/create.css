@@ -1,0 +1,18 @@
+.createPage {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 0;
+}
+
+.createPage__form form {
+    background:var(--green);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.createPage input[type="submit"] {
+    padding: 6px;
+}

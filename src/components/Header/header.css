@@ -2,4 +2,24 @@ header {
     background-color: var(--green);
     color: var(--text-color-light);
     padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header__logo{
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+}
+
+header .header__create {
+    padding:24px;
+    background-color: white;
+    text-decoration: none;
+    transition: 200ms;
+}
+
+header .header__create:hover{
+    background-color: var(--light-green);
 }

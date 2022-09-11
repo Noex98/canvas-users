@@ -14,3 +14,30 @@
     height: auto;
     border-radius: 50%;
 }
+
+.userComponent__btnContainer {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.userComponent__btnContainer button {
+    padding: 6px;
+    background-color: rgb(201, 0, 0);
+    color: var(--text-color-light);
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    font-size: 16px;
+}
+
+.userComponent__btnContainer a {
+    padding: 6px;
+    background-color: var(--green);
+    color: var(--text-color-light);;
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    font-size: 16px;
+    text-decoration: none;
+}
