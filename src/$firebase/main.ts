@@ -2,23 +2,12 @@ import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore";
 
 const config = {
-    apiKey: "AIzaSyCI_VTBj8inrJWIjIYf_Y7bBpT9aRRQS1o",
-    authDomain: "user-app-289f1.firebaseapp.com",
-    databaseURL: "https://user-app-289f1.firebaseio.com",
-    projectId: "user-app-289f1",
-    storageBucket: "user-app-289f1.appspot.com",
-    messagingSenderId: "438369021654",
-    appId: "1:438369021654:web:8138ce7351d51603c0a377"
-    
-    /*
-    apiKey: "AIzaSyCI_VTBj8inrJWIjIYf_Y7bBpT9aRRQS1o",
-    authDomain: "user-app-289f1.firebaseapp.com",
-    databaseURL: "https://user-app-289f1.firebaseio.com",
-    projectId: "user-app-289f1",
-    storageBucket: "user-app-289f1.appspot.com",
-    messagingSenderId: "438369021654",
-    appId: "1:438369021654:web:8138ce7351d51603c0a377"
-    */
+    apiKey: "AIzaSyCEx1woibK7ZJfnP7dqWYg7OxUuPeSZ2_c",
+    authDomain: "canvas-users.firebaseapp.com",
+    projectId: "canvas-users",
+    storageBucket: "canvas-users.appspot.com",
+    messagingSenderId: "955226736450",
+    appId: "1:955226736450:web:ac764c37af163f5cffeadb"
 }
 
 export const app = initializeApp(config)

@@ -7,10 +7,11 @@ import {
     Update,
     Posts
 } from './pages';
+import { UserContextProvider } from './contexts/UserContext';
 
 function App() {
     return (
-        <>
+        <UserContextProvider>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Posts />}/>
@@ -18,7 +19,7 @@ function App() {
                     <Route path="/posts/:id" element={<Update />}/>
                 </Routes>
             </BrowserRouter>
-        </>
+        </UserContextProvider>
     );
 }
 

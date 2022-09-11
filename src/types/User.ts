@@ -1,4 +1,4 @@
-export interface UserRaw {
+export interface IUserRaw {
     name: string,
     created_at: string,
     sortable_name: string,
@@ -6,9 +6,9 @@ export interface UserRaw {
     avatar_url: string,
     email: string,
     analytics_url: string,
-    enrollment_type: "student" | "teacher"
+    enrollment_type: "Student" | "Teacher"
 }
 
-export interface User extends UserRaw {
+export interface IUser extends IUserRaw {
     id: string,
 }

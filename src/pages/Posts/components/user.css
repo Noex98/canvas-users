@@ -1,0 +1,16 @@
+.userComponent {
+    text-align: center;
+    padding: 2em 1em;
+    background-color: var(--light-grey);
+}
+
+.userComponent:hover {
+    box-shadow: 0 8px 16px 0 var(--green-opacity);
+}
+
+.userComponent img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+}

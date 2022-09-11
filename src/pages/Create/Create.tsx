@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Header } from '../../components'
 import { userModel } from '../../$firebase';
-import { UserRaw } from '../../types';
+import { IUserRaw } from '../../types';
 
 export const Create = () => {
 
-	const [pendingUser, setPendingUser] = useState<UserRaw>({
+	const [pendingUser, setPendingUser] = useState<IUserRaw>({
 		name: "",
 		created_at: "",
 		sortable_name: "",
@@ -13,10 +13,11 @@ export const Create = () => {
 		avatar_url: "",
 		email: "",
 		analytics_url: "xxx",
-		enrollment_type: "student",
+		enrollment_type: "Student",
 	})
 
-	function handlesubmit(){
+	function handlesubmit(e: React.FormEvent){
+        e.preventDefault();
 		userModel.setDoc(pendingUser);
 	}
 
@@ -28,27 +29,27 @@ export const Create = () => {
 				<div>
 					<label>
 						<span>Name</span>
-						<input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+						<input type="text" value={pendingUser.name} onChange={(e) => setPendingUser(prev => ({ ...prev, name: e.target.value}))}/>
 					</label>
 				</div>
 				<div>
 					<label>
 						<span>Email</span>
-						<input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+						<input type="text" value={pendingUser.email} onChange={(e) => setPendingUser(prev => ({ ...prev, email: e.target.value}))}/>
 					</label>
 				</div>
 				<div>
 					<label>
 						<span>Avatar URL</span>
-						<input type="text" value={avatarUrl} onChange={(e) => setAvatarUrl(e.target.value)}/>
+						<input type="text" value={pendingUser.avatar_url} onChange={(e) => setPendingUser(prev => ({ ...prev, avatar_url: e.target.value}))}/>
 					</label>
 				</div>
 				<div>
 					<label>
 						<span>Enrollment</span>
 						<select>
-							<option value="student"></option>
-							<option value="teacher"></option>
+							<option value="Student">Student</option>
+							<option value="Teacher">Teacher</option>
 						</select>
 					</label>
 				</div>

@@ -1,5 +1,5 @@
 import { createCollection } from "../utils";
-import { User, UserRaw } from "../../../types";
+import { IUser,IUserRaw } from "../../../types";
 import { 
     doc,
     getDocs, 
@@ -11,7 +11,7 @@ const name = 'users';
 
 export class userModel {
 
-    static ref = createCollection<UserRaw>(name)
+    static ref = createCollection<IUserRaw>(name)
 
     /**
      * @returns An array of all documents in the collection
@@ -27,7 +27,7 @@ export class userModel {
      * @returns An unsubscribe function
      */
 
-    static startObserver(dataHandler: (data:User[] ) => void){
+    static startObserver(dataHandler: (data:IUser[] ) => void){
         return onSnapshot(this.ref, 
             data => {
                 dataHandler(data.docs.map(doc => ({
@@ -44,9 +44,11 @@ export class userModel {
     /**
      * @param data The user data
      * @param id Document ID, if omitted it will be auto generated
+     * @returns A Promise resolved once the data has been successfully written to the backend (note that it won't resolve while you're offline).
      */
 
-    static setDoc(data: UserRaw, id?: string){
-        setDoc(doc(this.ref, id), data)
+    static async setDoc(data: IUserRaw, id?: string){
+        console.log(this.ref);
+        return await setDoc(doc(this.ref), data);
     }
 }

@@ -1,5 +1,40 @@
-.postsPage label{
-    margin:6px 12px;
-    padding: 6px;
-    background-color: rgb(221, 221, 221);
+.postPage__filter {
+    background-color: var(--green);
+    padding: 1em;
+    margin-top: -2em;
+}
+
+label {
+    padding: 1em 2em 1em 0;
+    color: var(--text-color-light);
+}
+
+label input,
+label select {
+    padding: 0.3em;
+    margin: 0 0 0 1em;
+}
+
+input[type="checkbox"],
+select {
+    cursor: pointer;
+}
+
+.postPage__userContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1em;
+    gap: 1em;
+}
+
+@media (min-width: 600px) {
+    .postPage__userContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .postPage__userContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
